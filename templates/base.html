@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}E-commerce{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="/">EShopVN</a>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sản phẩm..." id="searchInput" value="{% block search_query %}{% endblock %}">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="/" class="nav-button">Trang chủ</a>
+                <a href="/cart" class="nav-button">
+                    <i class="fas fa-shopping-cart"></i> Giỏ hàng
+                </a>
+
+                <!-- Hiển thị khi chưa đăng nhập -->
+                <div class="auth-buttons" id="authButtons">
+                    <a href="/login" class="nav-button">Đăng nhập</a>
+                    <a href="/register" class="nav-button">Đăng ký</a>
+                </div>
+
+                <!-- Hiển thị khi đã đăng nhập -->
+                <div class="user-profile" id="userProfile" style="display: none;">
+                    <div class="profile-dropdown">
+                        <div class="profile-trigger">
+                            <div class="avatar" id="userAvatar">
+                                <!-- Avatar sẽ được thêm bằng JavaScript -->
+                            </div>
+                            <span class="username" id="username">Tên người dùng</span>
+                        </div>
+
+                        <div class="dropdown-content">
+                            <div class="dropdown-section">
+                                <h4>Thông báo</h4>
+                                <div class="notification-container" id="notificationContainer">
+                                    <div class="notification">
+                                        <p>Đơn hàng bị delay</p>
+                                    </div>
+                                    <div class="notification">
+                                        <p>Sự cố đã được xử lý</p>
+                                    </div>
+                                    <div class="notification">
+                                        <p>Phiếu report sản phẩm có hành vi xấu đã được xử lý</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-section">
+                                <h4>Tài khoản</h4>
+                                <ul>
+                                    <li><a href="/account/profile">Tài khoản của tôi</a></li>
+                                    <li><a href="/account/profile">Hồ sơ</a></li>
+                                    <li><a href="/account/bank">Ngân hàng</a></li>
+                                    <li><a href="/account/address">Địa chỉ</a></li>
+                                    <li><a href="/account/change-password">Đổi mật khẩu</a></li>
+                                    <li><a href="/account/orders">Đơn Mua</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown-section">
+                                <a href="/account/edit-profile">Sửa hồ sơ</a>
+                            </div>
+
+                            <div class="dropdown-section logout">
+                                <a href="javascript:void(0)" id="logoutButton">Đăng xuất</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <!-- Profile Page Template (ẩn mặc định) -->
+    <div class="profile-page" id="profilePage" style="display: none;">
+        <div class="profile-header">
+            <h2>Hồ sơ của tôi</h2>
+            <p class="profile-description">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+        </div>
+
+        <div class="profile-form">
+            <div class="form-group">
+                <label for="profileUsername">Tên đăng nhập</label>
+                <p id="profileUsername" class="readonly-field">huyajaka</p>
+            </div>
+
+            <div class="form-group">
+                <label for="profileName">Tên</label>
+                <input type="text" id="profileName" placeholder="Nhập tên của bạn">
+            </div>
+
+            <div class="form-group">
+                <label>Giới tính</label>
+                <div class="gender-options">
+                    <label>
+                        <input type="radio" name="gender" value="male"> Nam
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female"> Nữ
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="profileBirthday">Ngày sinh</label>
+                <input type="date" id="profileBirthday">
+            </div>
+
+            <div class="form-group avatar-upload">
+                <label>Ảnh đại diện</label>
+                <div class="avatar-container">
+                    <div class="avatar-preview" id="avatarPreview">
+                        <!-- Avatar hiện tại sẽ được hiển thị ở đây -->
+                    </div>
+                    <div class="avatar-actions">
+                        <button class="avatar-upload-btn" id="avatarUploadBtn">Chọn ảnh</button>
+                        <input type="file" id="avatarInput" accept=".jpg,.jpeg,.png" style="display: none;">
+                        <p class="avatar-help">Dung lượng tối đa: 1MB. Định dạng: .JPEG, .PNG</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="save-profile-btn" id="saveProfileBtn">Lưu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
