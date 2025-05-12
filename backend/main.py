@@ -61,6 +61,31 @@ app.include_router(admin.router)
 app.include_router(seller.router)
 app.include_router(dialogflow.router)
 
+# Trong main.py, thêm các đường dẫn để phục vụ các file frontend
+@app.get("/login", tags=["Frontend"], response_class=HTMLResponse)
+async def login_page(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@app.get("/register", tags=["Frontend"], response_class=HTMLResponse)
+async def register_page(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})
+
+@app.get("/cart", tags=["Frontend"], response_class=HTMLResponse)
+async def cart_page(request: Request):
+    return templates.TemplateResponse("cart.html", {"request": request})
+
+@app.get("/product/{product_id}", tags=["Frontend"], response_class=HTMLResponse)
+async def product_detail_page(request: Request, product_id: str):
+    return templates.TemplateResponse("product_detail.html", {"request": request, "product_id": product_id})
+
+@app.get("/admin", tags=["Frontend"], response_class=HTMLResponse)
+async def admin_dashboard(request: Request):
+    return templates.TemplateResponse("admin_dashboard.html", {"request": request})
+
+@app.get("/seller", tags=["Frontend"], response_class=HTMLResponse)
+async def seller_dashboard(request: Request):
+    return templates.TemplateResponse("seller_dashboard.html", {"request": request})
+
 # Root endpoint - Frontend landing page
 @app.get("/", tags=["Frontend"], response_class=HTMLResponse)
 async def home_page(request: Request):
