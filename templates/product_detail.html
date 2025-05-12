@@ -52,7 +52,7 @@
                     </form>
                     
                     <div class="d-flex align-items-center">
-                        <a href="cart.html" class="btn btn-outline-primary me-2 position-relative">
+                        <a href="cart" class="btn btn-outline-primary me-2 position-relative">
                             <i class="bi bi-cart"></i>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
                                 0
@@ -61,8 +61,8 @@
                         
                         <!-- Guest Links -->
                         <div class="logged-out">
-                            <a href="login.html" class="btn btn-outline-primary me-2">Đăng nhập</a>
-                            <a href="register.html" class="btn btn-primary">Đăng ký</a>
+                            <a href="login" class="btn btn-outline-primary me-2">Đăng nhập</a>
+                            <a href="register" class="btn btn-primary">Đăng ký</a>
                         </div>
                         
                         <!-- User Links -->
@@ -97,15 +97,15 @@
                 </div>
                 
                 <div class="col-lg-7">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                            <li class="breadcrumb-item"><a href="#" id="productCategory">Danh mục</a></li>
-                            <li class="breadcrumb-item active" aria-current="page" id="productTitle">Tên sản phẩm</li>
-                        </ol>
-                    </nav>
-                    
-                    <h1 class="mb-3" id="productTitle">Tên sản phẩm</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="#" id="productCategory">Danh mục</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" id="productTitleBreadcrumb">Tên sản phẩm</li>
+                    </ol>
+                </nav>
+
+                <h1 class="mb-3" id="productTitle">Tên sản phẩm</h1>
                     
                     <div class="d-flex align-items-center mb-3">
                         <h2 class="text-primary mb-0 me-3" id="productPrice">0₫</h2>
@@ -178,7 +178,7 @@
                     
                     <div class="mb-4 logged-out">
                         <div class="alert alert-info">
-                            Vui lòng <a href="login.html">đăng nhập</a> để viết đánh giá.
+                            Vui lòng <a href="login">đăng nhập</a> để viết đánh giá.
                         </div>
                     </div>
                     
@@ -311,7 +311,7 @@
         // Report button click
         $('#reportBtn').on('click', function() {
             if (!currentUser) {
-                window.location.href = 'login.html?redirect=product_detail.html' + window.location.search;
+                window.location.href = 'login?redirect=product_detail.html' + window.location.search;
                 return;
             }
             $('#reportModal').modal('show');

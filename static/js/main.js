@@ -73,7 +73,7 @@ function updateNavigation() {
             currentPage === 'admin_dashboard.html' ||
             currentPage === 'cart.html'
         ) {
-            window.location.href = 'login.html?redirect=' + currentPage;
+            window.location.href = 'login?redirect=' + currentPage;
         }
     } else {
         // Redirect from role-specific pages if not authorized
@@ -820,7 +820,7 @@ function updateCartBadge() {
 
 function addToCart(productId, productName, productPrice) {
     if (!currentUser) {
-        window.location.href = 'login.html?redirect=product_detail.html?id=' + productId;
+        window.location.href = 'login?redirect=product_detail.html?id=' + productId;
         return;
     }
     
@@ -872,7 +872,7 @@ function removeFromCart(productId) {
 
 function checkout() {
     if (!currentUser) {
-        window.location.href = 'login.html?redirect=cart.html';
+        window.location.href = 'login?redirect=cart.html';
         return;
     }
     
