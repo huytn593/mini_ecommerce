@@ -85,7 +85,6 @@ async def admin_dashboard(request: Request):
 @app.get("/seller", tags=["Frontend"], response_class=HTMLResponse)
 async def seller_dashboard(request: Request):
     return templates.TemplateResponse("seller_dashboard.html", {"request": request})
-
 # Root endpoint - Frontend landing page
 @app.get("/", tags=["Frontend"], response_class=HTMLResponse)
 async def home_page(request: Request):
